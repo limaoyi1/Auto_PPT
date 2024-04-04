@@ -38,7 +38,7 @@ class GptChain:
             input_variables=["chat_history", "human_input"], template=self.template)
         llm_chain = LLMChain(
             llm=OpenAI(model_name="gpt-3.5-turbo", openai_api_key=self.openai_api_key, streaming=True,
-                       callbacks=[StreamingStdOutCallbackHandler()]),
+                       callbacks=[StreamingStdOutCallbackHandler()],openai_api_base=self.openai_base_url),
             prompt=prompt,
             verbose=True,
             memory=memory,
